@@ -1,0 +1,9 @@
+<h1>Listing Books</h1>
+    <table>
+        <%= for book <- @books do %>
+            <tr>
+                <td> (<%= book.id %>) <b><%= title(book) %></b></td>
+                <td><%= link "View", to: Routes.books_path(@conn, :show, book.id) %></td>
+            </tr>
+        <% end %>
+    </table>
