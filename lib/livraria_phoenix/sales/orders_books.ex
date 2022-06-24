@@ -1,10 +1,10 @@
-defmodule LivrariaPhoenix.Sales.ShoppingCart do
+defmodule LivrariaPhoenix.Sales.OrdersBooks do
   use Ecto.Schema
   import Ecto.Changeset
 
   @fields [:quantity, :total_price]
 
-  schema "shopping_carts" do
+  schema "orders_books" do
     field :quantity, :integer
     field :total_price, :float
 

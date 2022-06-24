@@ -72,4 +72,25 @@ ORDERS
     HAS ONE: SHOPPING_CARD_ID
 END ORDERS
 
+USEFUL_COMMANDS
+
+    TESTE CHANGESET
+        [DIRETORIO].changeset(%[PASTA]{}, %{"[CAMPO]" => [ENTRADA]})
+
+        changeset = Book.changeset(%Book{}, %{"title" => "Aprenda a programar com pyton", "description" => "Descomplicando o desenvolvimento de software", "price" => "39.90"})
+
+        changeset = Author.changeset(%Author{}, %{"author_name" => "Everton Coimbra de Araújo"})
+
+        changeset = Category.changeset(%Category{}, %{"category" => "Programação"})
+
+        inser and update:
+            Repo.insert! %Module{field: "date"} 
+                ex:
+            Repo.insert! %Category{category: "Programação"}
+            
+END USEFUL_COMMANDS
+
+
+
+
 

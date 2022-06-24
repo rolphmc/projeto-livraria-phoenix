@@ -2,24 +2,41 @@ defmodule LivrariaPhoenix.Customers.Customer do
   use Ecto.Schema
   import Ecto.Changeset
 
+  alias LivrariaPhoenix.Books.Book
+  alias LivrariaPhoenix.Sales.Order
+  alias LivrariaPhoenix.Customers.Shelf
+
+  @fields [:email, :encrypted_password, :name, :username]
+
   schema "customers" do
     field :email, :string
     field :encrypted_password, :string
     field :name, :string
-    field :password, :string
+    field :password, :string, virtual: true
     field :username, :string
 
-    #has_many :books, Book
-    #has_many :orders, Order
-    #has_many :shopping_carts, ShoppingCart
+    # relações
+    has_one :shelf, Shelf
+    has_many :orders, Order
+    many_to_many :book, Book, join_through: "shopping_carts"
 
     timestamps()
   end
 
   @doc false
-  def changeset(customer, attrs) do
-    customer
-    |> cast(attrs, [:username, :name, :email, :encrypted_password, :password])
-    |> validate_required([:username, :name, :email, :encrypted_password, :password])
+  def changeset(struct, params) do
+    struct
+    |> cast(params, @fields)
+    |> validate_required(@fields)
+
+    """
+    Deverá fazer parte das regras de negócio ligadas a autenticação
+      |> unique_constraint(:email)
+      |> unique_constraint(:username)
+      |> validate_format(:email, ~r/@/)
+      |> validate_format(:username, ~r/^[a-zA-Z0-9]*$/)
+      |> validate_length(:password, min: 4)
+    
+    """
   end
 end

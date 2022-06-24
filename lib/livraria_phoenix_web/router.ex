@@ -17,7 +17,7 @@ defmodule LivrariaPhoenixWeb.Router do
   scope "/", LivrariaPhoenixWeb do
     pipe_through :browser
 
-    get "/books/", BooksController, :index
+    get "/books", BooksController, :index
     get "/books/:id", BooksController, :show
     get "/", PageController, :index
   end

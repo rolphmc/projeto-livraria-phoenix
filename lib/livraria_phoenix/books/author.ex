@@ -1,6 +1,10 @@
-defmodule LivrariaPhoenix.Author do
+defmodule LivrariaPhoenix.Books.Author do
   use Ecto.Schema
   import Ecto.Changeset
+
+  alias LivrariaPhoenix.Books.Book
+
+  @fields [:author_name]
 
   schema "authors" do
     field :author_name, :string
@@ -10,10 +14,11 @@ defmodule LivrariaPhoenix.Author do
     timestamps()
   end
 
-  @doc false
-  def changeset(author, attrs) do
-    author
-    |> cast(attrs, [:author_name])
-    |> validate_required([:author_name])
+  def changeset(struct, params) do
+    struct
+    |> cast(params, @fields)
+    |> validate_required(@fields)
+    |> unique_constraint(@fields)
+    |> validate_length(:author_name, min: 2, max: 60)
   end
 end
