@@ -1,8 +1,29 @@
 defmodule LivrariaPhoenix.Customers do
+  import Ecto.Changeset
+
   @moduledoc """
     Contexto relacionado aos clientes do projeto
   """
   alias LivrariaPhoenix.Customers.Customer
+
+  # ###########################
+  #                   Customers
+  # ###########################
+
+  def create_customer (any) do
+
+  end
+
+  def register_changeset(params \\ %{}) do
+    %Customer{}
+    |> cast(params, [:username, :name, :email, :password])
+    |> validate_required([:username, :name, :email, :password])
+    |> unique_constraint(:email)
+    |> unique_constraint(:username)
+    |> validate_format(:email, ~r/@/)
+    |> validate_format(:username, ~r/^[a-zA-Z0-9]*$/)
+    |> validate_length(:password, min: 4)
+  end
 
   def customers_list do
     [

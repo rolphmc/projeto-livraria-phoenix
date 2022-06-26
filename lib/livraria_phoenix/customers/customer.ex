@@ -6,14 +6,14 @@ defmodule LivrariaPhoenix.Customers.Customer do
   alias LivrariaPhoenix.Sales.Order
   alias LivrariaPhoenix.Customers.Shelf
 
-  @fields [:email, :encrypted_password, :name, :username]
+  @fields [:email, :name, :username, :encrypted_password]
 
   schema "customers" do
     field :email, :string
     field :encrypted_password, :string
     field :name, :string
-    field :password, :string, virtual: true
     field :username, :string
+    field :password, :string, virtual: true
 
     # relações
     has_one :shelf, Shelf
@@ -36,7 +36,7 @@ defmodule LivrariaPhoenix.Customers.Customer do
       |> validate_format(:email, ~r/@/)
       |> validate_format(:username, ~r/^[a-zA-Z0-9]*$/)
       |> validate_length(:password, min: 4)
-    
+
     """
   end
 end

@@ -1,4 +1,4 @@
-defmodule LivrariaPhoenix.Repo.Migrations.CreateSubcategoriesBooks do
+defmodule LivrariaPhoenix.Repo.Migrations.CreateCategoriesBooks do
   use Ecto.Migration
 
   def change do

@@ -7,7 +7,7 @@ BOOKS:
         logica
             Aprenda a programar com pyton       
             Lógica de programação com portugol  
-            kodular                             
+            Cangaceiro JavaScript
         games
             TDD para games
             Jogos com Scratch
@@ -81,12 +81,14 @@ USEFUL_COMMANDS
 
         changeset = Author.changeset(%Author{}, %{"author_name" => "Everton Coimbra de Araújo"})
 
-        changeset = Category.changeset(%Category{}, %{"category" => "Programação"})
+        changeset = Subcategory.changeset(%Subcategory{}, %{"subcategory" => "Multiplataforma", "category_id" => 5})
 
         inser and update:
             Repo.insert! %Module{field: "date"} 
                 ex:
-            Repo.insert! %Category{category: "Programação"}
+            Repo.insert! %Book{title: "Cangaceiro JavaScript", description: "Uma aventura no sertao da programacao", price: 39.90}
+
+            Repo.insert! %Author{author_name: "Joice Barbosa Mendes, Rafael da Silva Muniz"}
             
 END USEFUL_COMMANDS
 

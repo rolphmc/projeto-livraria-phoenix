@@ -2,13 +2,11 @@ defmodule LivrariaPhoenix.Books.Book do
   use Ecto.Schema
   import Ecto.Changeset
 
-  alias LivrariaPhoenix.Books.Author
-  alias LivrariaPhoenix.Books.Subcategory
   alias LivrariaPhoenix.Sales.Order
-  alias LivrariaPhoenix.Customers.Shelf
-  alias LivrariaPhoenix.Customers.Customer
+  alias LivrariaPhoenix.Books.{Author, Subcategory}
+  alias LivrariaPhoenix.Customers.{Shelf, Customer}
 
-  @fields [:description, :price, :title]
+  @fields [:description, :price, :title, :author_id]
 
   schema "books" do
     field :description, :string
@@ -34,7 +32,9 @@ defmodule LivrariaPhoenix.Books.Book do
     |> validate_required(:price, greater_than_or_equal_to: 0.00)
     |> validate_length(:description, min: 10, max: 256)
     |> validate_length(:title, min: 10, max: 60)
+    |> assoc_constraint(:author) #--> funcional (usar nome da associação belongs_to)
 
-    # validação para que as categorias e subcategorias sejam validadas em suas respectivas tables
+
+    # assoc_constraint --> usar recurso onde for necessário em outras tables
   end
 end

@@ -1,0 +1,25 @@
+<h1>Novo Author</h1>
+
+<!-- formulário -->
+
+    <%= form_for @customer_changeset, Routes.page_path(@conn, :create_user), fn f -> %>
+    <br>  
+    <%= text_input f, :email, placeholder: "E-mail" %>
+    <span><%= error_tag f, :email %></span>
+    <br>
+    <%= text_input f, :name, placeholder: "Nome Completo" %>
+    <span><%= error_tag f, :name %></span>
+    <br>
+    <%= text_input f, :username, placeholder: "Nome de Usuario" %>
+    <span><%= error_tag f, :username %></span>
+    <br>
+    <%= text_input f, :password, placeholder: "Senha", type: "password" %>
+    <span><%= error_tag f, :password %></span>
+    <br>
+    <%= submit "Sign up", class: "signup" %>
+    <br>
+    <% end %>
+
+<!-- end formulário -->
+
+<span><%= link "Back", to: Routes.user_path(@conn, :index) %></span>
