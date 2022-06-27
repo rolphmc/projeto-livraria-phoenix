@@ -22,11 +22,8 @@ defmodule LivrariaPhoenixWeb.Router do
     get "/books/:id", BooksController, :show
     #automáticos
     get "/", PageController, :index
-<<<<<<< Updated upstream
 
     #rotas comun
-=======
->>>>>>> Stashed changes
     resources "/customers", CustomersController, only: [:index, :show, :new, :create]
   end
 

@@ -1,7 +1,12 @@
 <h1>Novo Cliente</h1>
 
-    <%= form_for @changeset, Routes.customer_path(@conn, :create), fn f -> %>
-    <br>  
+    <%= form_for @changeset, Routes.customers_path(@conn, :create), fn f -> %>
+    <br> 
+    <%= if @changeset.action do %>
+        <div class="alert alert-danger">
+            <p> Aconteceu algo de errado! confira abaixo</p>
+        </div>
+    <% end %>
     <%= text_input f, :email, placeholder: "E-mail" %>
     <span><%= error_tag f, :email %></span>
     <br>
@@ -18,4 +23,4 @@
     <br>
     <% end %>
 
-<span><%= link "Back", to: Routes.user_path(@conn, :index) %></span>
+<span><%= link "Back", to: Routes.page_path(@conn, :index) %></span>

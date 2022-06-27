@@ -4,13 +4,10 @@ defmodule LivrariaPhoenix.Books do
     regras de negócio relacionada ao contexto dos livros
   """
 
-<<<<<<< Updated upstream
   alias LivrariaPhoenix.Books.{Category, Book}
 
-=======
   alias LivrariaPhoenix.Books.Category
   alias LivrariaPhoenix.Books.Book
->>>>>>> Stashed changes
   alias LivrariaPhoenix.Repo
 
   # ###########################
@@ -49,11 +46,7 @@ defmodule LivrariaPhoenix.Books do
   end
 
   def get_book(id) do
-<<<<<<< Updated upstream
-    Repo.get(Book, id)
-=======
     Repo.get!(Book, id)
->>>>>>> Stashed changes
   end
 
   def get_book_by(params) do
