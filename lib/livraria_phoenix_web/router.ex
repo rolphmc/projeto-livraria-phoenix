@@ -17,9 +17,17 @@ defmodule LivrariaPhoenixWeb.Router do
   scope "/", LivrariaPhoenixWeb do
     pipe_through :browser
 
+    #manual
     get "/books", BooksController, :index
     get "/books/:id", BooksController, :show
+    #automáticos
     get "/", PageController, :index
+<<<<<<< Updated upstream
+
+    #rotas comun
+=======
+>>>>>>> Stashed changes
+    resources "/customers", CustomersController, only: [:index, :show, :new, :create]
   end
 
   # Other scopes may use custom stacks.

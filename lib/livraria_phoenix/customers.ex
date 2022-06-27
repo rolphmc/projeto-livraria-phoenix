@@ -4,14 +4,31 @@ defmodule LivrariaPhoenix.Customers do
   @moduledoc """
     Contexto relacionado aos clientes do projeto
   """
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
+  alias LivrariaPhoenix.Repo
   alias LivrariaPhoenix.Customers.Customer
 
   # ###########################
   #                   Customers
   # ###########################
 
-  def create_customer (any) do
+  def create_customer(params \\ %{}) do
+<<<<<<< Updated upstream
+    %Customer{}
+    |> Customer.changeset(params)
+    |> Repo.insert()
+  end
 
+  def change_customer(%Customer{} = customer) do
+    Customer.changeset(customer, %{})
+=======
+      %Customer{}
+      |> Customer.changeset(params)
+      |> Repo.insert()
+>>>>>>> Stashed changes
   end
 
   def register_changeset(params \\ %{}) do

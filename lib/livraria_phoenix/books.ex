@@ -1,13 +1,20 @@
 defmodule LivrariaPhoenix.Books do
+
   @moduledoc """
     regras de negócio relacionada ao contexto dos livros
   """
 
+<<<<<<< Updated upstream
+  alias LivrariaPhoenix.Books.{Category, Book}
+
+=======
   alias LivrariaPhoenix.Books.Category
+  alias LivrariaPhoenix.Books.Book
+>>>>>>> Stashed changes
   alias LivrariaPhoenix.Repo
 
   # ###########################
-  # gerenciamento de categorias
+  #                  Categories
   # ###########################
 
       # pag 124 p.phoenix ensina a adcionar multiplos registros
@@ -33,20 +40,20 @@ defmodule LivrariaPhoenix.Books do
 
   end
 
+  # ###########################
+  #                       Books
+  # ###########################
 
   def books_list do
-    # temporary function sample
-    [
-      """
-      %Book{id: 1, category: "programação", subcategory: "logica", title: "Aprenda a programar com pyton", description: "Descomplicando o desenvolvimento de software", image: "/", price: "39,90"},
-      %Book{id: 2, category: "programação", subcategory: "games", title: "TDD para games", description: "Desenvolvimento guiado a testes para jogos digitais", image: "/", price: "69,90"},
-      %Book{id: 3, category: "mobile", subcategory: "android", title: "Ionic 6", description: "Desenvolvimento multiplataforma para dispositivos móveis", image: "/", price: "79,90"},
-      """
-    ]
+    Repo.all(Book)
   end
 
   def get_book(id) do
-    Enum.find(books_list(), fn map -> map.id == id end)
+<<<<<<< Updated upstream
+    Repo.get(Book, id)
+=======
+    Repo.get!(Book, id)
+>>>>>>> Stashed changes
   end
 
   def get_book_by(params) do

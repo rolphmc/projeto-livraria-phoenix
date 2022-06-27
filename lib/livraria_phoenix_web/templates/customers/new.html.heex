@@ -1,8 +1,6 @@
-<h1>Novo Author</h1>
+<h1>Novo Cliente</h1>
 
-<!-- formulário -->
-
-    <%= form_for @customer_changeset, Routes.page_path(@conn, :create_user), fn f -> %>
+    <%= form_for @changeset, Routes.customer_path(@conn, :create), fn f -> %>
     <br>  
     <%= text_input f, :email, placeholder: "E-mail" %>
     <span><%= error_tag f, :email %></span>
@@ -16,10 +14,8 @@
     <%= text_input f, :password, placeholder: "Senha", type: "password" %>
     <span><%= error_tag f, :password %></span>
     <br>
-    <%= submit "Sign up", class: "signup" %>
+    <%= submit "Sign up" %>
     <br>
     <% end %>
-
-<!-- end formulário -->
 
 <span><%= link "Back", to: Routes.user_path(@conn, :index) %></span>

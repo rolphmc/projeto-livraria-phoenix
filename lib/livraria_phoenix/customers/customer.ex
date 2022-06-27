@@ -24,19 +24,9 @@ defmodule LivrariaPhoenix.Customers.Customer do
   end
 
   @doc false
-  def changeset(struct, params) do
-    struct
+  def changeset(customer, params) do
+    customer
     |> cast(params, @fields)
     |> validate_required(@fields)
-
-    """
-    Deverá fazer parte das regras de negócio ligadas a autenticação
-      |> unique_constraint(:email)
-      |> unique_constraint(:username)
-      |> validate_format(:email, ~r/@/)
-      |> validate_format(:username, ~r/^[a-zA-Z0-9]*$/)
-      |> validate_length(:password, min: 4)
-
-    """
   end
 end
