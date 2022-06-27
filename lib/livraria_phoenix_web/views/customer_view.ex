@@ -1,3 +1,3 @@
 defmodule LivrariaPhoenixWeb.CustomerView do
-  LivrariaPhoenixWeb, :view
+  use LivrariaPhoenixWeb, :view
 end

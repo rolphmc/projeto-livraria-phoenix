@@ -1,9 +1,11 @@
 defmodule LivrariaPhoenix.Application do
   # See https://hexdocs.pm/elixir/Application.html
-  # for more information on OTP Applications
+  # for more infor  tion on OTP Applications
   @moduledoc false
 
   use Application
+
+  alias LivrariaPhoenix.MailerRouter
 
   @impl true
   def start(_type, _args) do
@@ -15,9 +17,12 @@ defmodule LivrariaPhoenix.Application do
       # Start the PubSub system
       {Phoenix.PubSub, name: LivrariaPhoenix.PubSub},
       # Start the Endpoint (http/https)
-      LivrariaPhoenixWeb.Endpoint
+      LivrariaPhoenixWeb.Endpoint,
       # Start a worker by calling: LivrariaPhoenix.Worker.start_link(arg)
       # {LivrariaPhoenix.Worker, arg}
+      #inicie serviço de e-mail
+      Plug.Adapters.Cowboy.child_spec(scheme: :http, plug: MailerRouter, options: [port: 8085])
+
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

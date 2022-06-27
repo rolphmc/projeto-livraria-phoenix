@@ -9,11 +9,6 @@ defmodule LivrariaPhoenix.Customers do
   # ###########################
   #                   Customers
   # ###########################
-
-  def create_customer (any) do
-
-  end
-
   def register_changeset(params \\ %{}) do
     %Customer{}
     |> cast(params, [:username, :name, :email, :password])
