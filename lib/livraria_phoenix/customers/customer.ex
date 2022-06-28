@@ -29,4 +29,28 @@ defmodule LivrariaPhoenix.Customers.Customer do
     |> cast(params, @fields)
     |> validate_required(@fields)
   end
+
+  def register_changeset(customer, params) do
+    customer
+    |> cast(params, [:password, :email, :username, :name])
+    |> validate_required([:password, :email, :username, :name])
+    |> validate_length(:password, min: 4)
+    |> unique_constraint(:email)
+    |> validate_format(:email, ~r/@/)
+    |> unique_constraint(:username)
+    |> validate_format(:username, ~r/^[a-zA-Z0-9]*$/)
+    |> validate_length(:username, min: 4, max: 25)
+    |> put_pass_hash()
+
+  end
+
+  defp put_pass_hash(changeset) do
+    case changeset do
+      %Ecto.Changeset{valid?: true, changes: %{password: pass}} ->
+        put_change(changeset, :encrypted_password, Pbkdf2.hash_pwd_salt(pass))
+
+        _ ->
+        changeset
+    end
+  end
 end
