@@ -20,7 +20,8 @@ defmodule LivrariaPhoenix.MixProject do
   def application do
     [
       mod: {LivrariaPhoenix.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :phoenix, :phoenix_html, :cowboy, :gettext,
+      :phoenix_ecto, :postgrex, :bamboo]
     ]
   end
 
@@ -51,7 +52,7 @@ defmodule LivrariaPhoenix.MixProject do
       {:plug_cowboy, "~> 2.5"},
       {:poison, "~> 5.0"},
       {:bamboo, "~> 1.4"},
-      {:bamboo_smtp, "~> 2.1.0"},
+      {:bamboo_smtp, "~> 3.0"},
       {:plug, "~> 1.13.6"}
 
     ]

@@ -24,10 +24,15 @@ config :livraria_phoenix, LivrariaPhoenixWeb.Endpoint,
 #
 # For production it's recommended to configure a different adapter
 # at the `config/runtime.exs`.
-config :livraria_phoenix, LivrariaPhoenix.Mailer, adapter: Swoosh.Adapters.Local
+
+#config :livraria_phoenix, LivrariaPhoenix.Mailer, adapter: Swoosh.Adapters.Local
 
 # Swoosh API client is needed for adapters other than SMTP.
-config :swoosh, :api_client, false
+# config :swoosh, :api_client, false
+
+config :livraria_phoenix, LivrariaPhoenix.Mailer,
+  adapter: Bamboo.LocalAdapter,
+  open_email_in_browser_url: "http://localhost:4000/sent_emails" # optional
 
 # Configure esbuild (the version is required)
 config :esbuild,
@@ -54,3 +59,12 @@ import_config "#{config_env()}.exs"
 config :mime, :types, %{
   "application/vnd.api+json" => ["json-api"]
 }
+
+config :livraria_phoenix, LivrariaPhoenix.Mailer,
+    adapter: Bamboo.SMTPAdapter,
+    server: "smtp.mailtrap.io",
+    port: 587,
+    username: "549fde43742b58", # or {:system, "SMTP_USERNAME"}
+    password: "8df9244aff9213", # or {:system, "SMTP_PASSWORD"}
+    tls: :if_available, # can be `:always` or `:never`
+    retries: 1

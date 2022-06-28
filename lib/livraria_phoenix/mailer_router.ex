@@ -1,7 +1,9 @@
 defmodule LivrariaPhoenix.MailerRouter do
-    use Plug.Router
-    use Plug.Debugger
-    require Logger
+
+  import Bamboo.Email
+  use Plug.Router
+  use Plug.Debugger
+  require Logger
 
     #https://www.tuliocalil.com.br/post/criando-servico-de-envio-de-e-mail-com-elixir
 
@@ -11,6 +13,14 @@ defmodule LivrariaPhoenix.MailerRouter do
 
   get "/" do
     send_resp(conn, 200, "Server online...")
+
+    new_email()
+    |> to("meu@livraria_phoenix.com")
+    |> from("meu@livraria_phoenix.com")
+    |> subject("Teste")
+    |> text_body("Testando envio de email")
+    |> LivrariaPhoenix.Mailer.deliver_now
+
   end
 
   match _ do
