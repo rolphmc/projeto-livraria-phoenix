@@ -3,6 +3,15 @@ defmodule LivrariaPhoenixWeb.CustomersController do
 
   alias LivrariaPhoenix.Customers
   alias LivrariaPhoenix.Customers.Customer
+  alias LivrariaPhoenixWeb.Auth
+
+  plug :authenticate when action in [:index, :show] #plug da função de auth
+
+  #chama lista de clientes - Apenas para acesso interno
+  def index(conn, _params) do
+        customer = Customers.customer_list()
+        render(conn, "index.html", customer: customer)
+  end
 
   #chama tela novo cadastro
   def new(conn, _params) do
@@ -14,9 +23,8 @@ defmodule LivrariaPhoenixWeb.CustomersController do
   def create(conn, %{"customer" => customer_params}) do
     case Customers.register_customer(customer_params) do
       {:ok, customer} ->
-        IO.puts("##########################################")
-
         conn
+        |> Auth.login(customer)
         |> put_flash(:info, "#{customer.username} created!")
         |> redirect(to: Routes.customers_path(conn, :show, customer))
       {:error, %Ecto.Changeset{} = changeset} ->
@@ -24,10 +32,22 @@ defmodule LivrariaPhoenixWeb.CustomersController do
     end
   end
 
-  #apresenta cadastro do cliente selecionado
+  #apresenta tela de cadastro do cliente selecionado
   def show(conn, %{"id" => id}) do
     customer = Customers.get_customer(id)
     render(conn, "show.html", customer: customer)
+  end
+
+  #Verifica se cliente está logado
+  defp authenticate(conn, _opts) do
+    if conn.assigns.current_customer do
+      conn
+    else
+      conn
+      |> put_flash(:error, "Você deve se logar para acessar esta página")
+      |> redirect(to: Routes.page_path(conn, :index))
+      |> halt()
+    end
   end
 
 end

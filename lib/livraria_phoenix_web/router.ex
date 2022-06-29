@@ -8,6 +8,7 @@ defmodule LivrariaPhoenixWeb.Router do
     plug :put_root_layout, {LivrariaPhoenixWeb.LayoutView, :root}
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug LivrariaPhoenixWeb.Auth # Autenticação Criada
   end
 
   pipeline :api do
@@ -23,8 +24,13 @@ defmodule LivrariaPhoenixWeb.Router do
     #automáticos
     get "/", PageController, :index
 
-    #rotas comun
+    #rotas comun (resources)
     resources "/customers", CustomersController, only: [:index, :show, :new, :create]
+    resources "/sessions", SessionsController, only: [:new, :create, :delete]
+    # new -> chamar form login
+    # create -> metod post para fazer login
+    # delete -> deslogar
+
   end
 
   # Other scopes may use custom stacks.

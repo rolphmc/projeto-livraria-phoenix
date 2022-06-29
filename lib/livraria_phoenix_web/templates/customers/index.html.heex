@@ -1,0 +1,10 @@
+<h1>Lista de Clientes</h1>
+    <table>
+        <%= for customer <- @customer do %>
+            <tr>
+                <%= render "customer.html", customer: customer %>
+                <td><%= link "View", to: Routes.customers_path(@conn, :show, customer.id) %></td>
+            </tr>
+        <% end %>
+    </table>
+<span><%= link "Novo Cliente", to: Routes.customers_path(@conn, :new) %></span>

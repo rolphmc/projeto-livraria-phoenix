@@ -1,5 +1,13 @@
 <main class="container"> 
+  <span><%= link "Sign in", to: Routes.customers_path(@conn, :new) %></span>
+  &nbsp;
+  <span><%= link "Login", to: Routes.customers_path(@conn, :new) %></span>
+  <br>
   <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
   <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
   <%= @inner_content %>
+
+  <footer>
+    <hr>
+  </footer>
 </main>
