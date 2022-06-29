@@ -40,6 +40,7 @@ defmodule LivrariaPhoenixWeb.CustomersController do
 
   #Verifica se cliente está logado
   defp authenticate(conn, _opts) do
+    inspect(conn.assigns.current_customer)
     if conn.assigns.current_customer do
       conn
     else

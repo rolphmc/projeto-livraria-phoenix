@@ -12,6 +12,9 @@ alias LivrariaPhoenix.Books.{Author, Book, CategoriesBooks,Category, Subcategory
 alias LivrariaPhoenix.Customers.{Customer, Shelf}
 alias LivrariaPhoenix.Sales.{Order, OrdersBooks, ShoppingCart}
 
+#aliases utilitários
+alias IO.puts(String.duplicate("#", 60)), as Marcador
+
 defmodule AC do
   def update(schema, changes) do
     schema

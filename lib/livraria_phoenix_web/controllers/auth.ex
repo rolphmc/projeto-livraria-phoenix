@@ -21,4 +21,9 @@ defmodule LivrariaPhoenixWeb.Auth do
     |> configure_session(renew: true)
   end
 
+  def logout (conn) do
+    configure_session(conn, drop: true)
+    #para um recurso futuro, é possivel excluir apenas o id e manter a sessão, ver página 100
+  end
+
 end
