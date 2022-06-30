@@ -73,3 +73,7 @@ config :phoenix, :stacktrace_depth, 20
 
 # Initialize plugs at runtime for faster development compilation
 config :phoenix, :plug_init_mode, :runtime
+
+#Bamboo env local adapter
+config :livraria_phoenix, LivrariaPhoenix.Mailer,
+  adapter: Bamboo.LocalAdapter

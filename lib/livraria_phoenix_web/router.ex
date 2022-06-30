@@ -21,6 +21,7 @@ defmodule LivrariaPhoenixWeb.Router do
     #manual
     get "/books", BooksController, :index
     get "/books/:id", BooksController, :show
+
     #automáticos
     get "/", PageController, :index
 
@@ -63,7 +64,7 @@ defmodule LivrariaPhoenixWeb.Router do
     scope "/dev" do
       pipe_through :browser
 
-      forward "/mailbox", Plug.Swoosh.MailboxPreview
+      forward "/mailbox", Bamboo.SentEmailViewerPlug
     end
   end
 end

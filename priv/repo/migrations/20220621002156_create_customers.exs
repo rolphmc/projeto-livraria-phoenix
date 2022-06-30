@@ -12,7 +12,7 @@ defmodule LivrariaPhoenix.Repo.Migrations.CreateCustomers do
       timestamps()
     end
 
-    create unique_index(:username, [:username])
-    create unique_index(:email, [:email])
+    create unique_index(:customers, [:username])
+    create unique_index(:customers, [:email])
   end
 end

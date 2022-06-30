@@ -47,7 +47,6 @@ defmodule LivrariaPhoenix.Customers do
 
   def authenticate_by_username_and_pass(username, given_pass) do
     customer = get_customer_by(username: username)
-    IO.inspect(customer)
     cond do
       customer && Pbkdf2.verify_pass(given_pass, customer.encrypted_password) ->
         {:ok, customer} #cliente e senha existe e coeincidem

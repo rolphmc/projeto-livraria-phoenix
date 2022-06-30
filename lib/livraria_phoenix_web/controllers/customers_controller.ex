@@ -1,9 +1,8 @@
 defmodule LivrariaPhoenixWeb.CustomersController do
   use LivrariaPhoenixWeb, :controller
 
-  alias LivrariaPhoenix.Customers
-  alias LivrariaPhoenix.Customers.Customer
   alias LivrariaPhoenixWeb.Auth
+  alias LivrariaPhoenix.{Customers, Customers.Customer, Mailer}
 
   plug :authenticate when action in [:index, :show] #plug da função de auth
 
@@ -23,11 +22,14 @@ defmodule LivrariaPhoenixWeb.CustomersController do
   def create(conn, %{"customer" => customer_params}) do
     case Customers.register_customer(customer_params) do
       {:ok, customer} ->
+        #email de boas vindas
+        Mailer.boas_vindas(customer)
+
         conn
         |> Auth.login(customer)
         |> put_flash(:info, "#{customer.username} created!")
         |> redirect(to: Routes.customers_path(conn, :show, customer))
-      {:error, %Ecto.Changeset{} = changeset} ->
+      {:error, changeset} ->
         render(conn, "new.html", changeset: changeset)
     end
   end
