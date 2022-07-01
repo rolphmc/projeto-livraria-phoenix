@@ -34,8 +34,8 @@ defmodule LivrariaPhoenix.Customers.Customer do
     customer
     |> cast(params, [:password, :email, :username, :name])
     |> validate_required([:password, :email, :username, :name])
-    |> unique_constraint(:email, message: "username ou e-mail já existe!")
-    |> unique_constraint(:username, message: "username ou e-mail já existe!")
+    |> unique_constraint(:email, message: "has already been taken")
+    |> unique_constraint(:username, message: "has already been taken")
     |> validate_length(:password, min: 4)
     |> validate_format(:email, ~r/@/)
     |> validate_format(:username, ~r/^[a-zA-Z0-9]*$/)

@@ -24,11 +24,16 @@ defmodule LivrariaPhoenix.DataCase do
       import Ecto.Changeset
       import Ecto.Query
       import LivrariaPhoenix.DataCase
+      import LivrariaPhoenix.TestHelpers
     end
   end
 
   setup tags do
-    LivrariaPhoenix.DataCase.setup_sandbox(tags)
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(LivrariaPhoenix.Repo)
+
+    unless tags[:async] do
+      Ecto.Adapters.SQL.Sandbox.mode(LivrariaPhoenix.Repo, {:shared, self()})
+    end
     :ok
   end
 

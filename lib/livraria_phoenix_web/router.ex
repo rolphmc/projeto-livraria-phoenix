@@ -16,7 +16,7 @@ defmodule LivrariaPhoenixWeb.Router do
   end
 
   scope "/", LivrariaPhoenixWeb do
-    pipe_through :browser
+    pipe_through [:browser]
 
     #manual
     get "/books", BooksController, :index
@@ -26,6 +26,7 @@ defmodule LivrariaPhoenixWeb.Router do
     get "/", PageController, :index
 
     #rotas comun (resources)
+    resources "/books", BooksController, only: [:new, :create]
     resources "/customers", CustomersController, only: [:index, :show, :new, :create]
     resources "/sessions", SessionsController, only: [:new, :create, :delete]
     # new -> chamar form login
