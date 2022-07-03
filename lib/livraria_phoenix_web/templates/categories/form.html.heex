@@ -1,0 +1,21 @@
+<style>
+    select#category_category_id{padding-right: 60px;}
+    a.link_block {color:darkgrey;}
+</style>
+
+    <.form let={f} for={@changeset} action={@action}>   
+        <br> 
+        <%= if @changeset.action do %>
+            <div class="alert alert-danger">
+                <p> Aconteceu algo de errado! confira abaixo</p>
+            </div>
+        <% end %>
+
+        <%= label f, :category_id, ""%>     <!-- nome em "" é o título do select, deixar sem!-->
+        <%= select f, :category_id, category_select_options(@categories),
+            prompt: "Escolha Categoria" %> &nbsp;
+            <a class="link_block" href="" title="Em breve será criado">+ Add Categoria</a>
+        <br><br><br>
+        <div style='text-align:right'><%= submit "Avançar" %></div>
+        <br>
+    </.form>

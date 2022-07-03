@@ -27,7 +27,7 @@ defmodule LivrariaPhoenixWeb.CustomersController do
 
         conn
         |> Auth.login(customer)
-        |> put_flash(:info, "#{customer.username} created!")
+        |> put_flash(:info, "#{customer.username} criado com sucesso, um e-mail de boas vindas foi enviado a seu email >.<")
         |> redirect(to: Routes.customers_path(conn, :show, customer))
       {:error, changeset} ->
         render(conn, "new.html", changeset: changeset)

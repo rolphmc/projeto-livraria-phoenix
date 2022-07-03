@@ -1,6 +1,7 @@
 defmodule LivrariaPhoenix.Books.Subcategory do
   use Ecto.Schema
   import Ecto.Changeset
+  import Ecto.Query
 
   alias LivrariaPhoenix.Books.Category
   alias LivrariaPhoenix.Books.Book
@@ -24,5 +25,13 @@ defmodule LivrariaPhoenix.Books.Subcategory do
     |> validate_required(@fields)
     |> unique_constraint(:subcategory)
     |> validate_length(:subcategory, min: 2, max: 15)
+  end
+
+  # ----------------Consultas
+
+  def alphabetical(query, id) do
+    IO.puts(String.duplicate("#", 60))
+    IO.puts("O id selecionado foi: #{id}")
+    from c in query, order_by: c.subcategory, where: c.category_id == ^id
   end
 end

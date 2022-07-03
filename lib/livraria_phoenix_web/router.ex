@@ -26,6 +26,8 @@ defmodule LivrariaPhoenixWeb.Router do
     get "/", PageController, :index
 
     #rotas comun (resources)
+    resources "/subcategories", SubcategoriesController, only: [:index, :create]
+    resources "/categories", CategoriesController, only: [:index, :create]
     resources "/books", BooksController, only: [:new, :create]
     resources "/customers", CustomersController, only: [:index, :show, :new, :create]
     resources "/sessions", SessionsController, only: [:new, :create, :delete]

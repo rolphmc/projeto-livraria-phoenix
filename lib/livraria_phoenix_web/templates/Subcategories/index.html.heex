@@ -1,0 +1,4 @@
+<h1>Cadastrar Novo Livro</h1>
+<h3>Escolha a Subcategoria</h3>
+
+<%= render "form.html", Map.put(assigns, :action, Routes.subcategories_path(@conn, :create)) %>

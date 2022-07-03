@@ -1,6 +1,8 @@
 defmodule LivrariaPhoenix.Books.Category do
   use Ecto.Schema
+
   import Ecto.Changeset
+  import Ecto.Query
 
   alias LivrariaPhoenix.Books.Subcategory
 
@@ -22,5 +24,11 @@ defmodule LivrariaPhoenix.Books.Category do
     |> validate_required(@fields)
     |> unique_constraint(:category)
     |> validate_length(:category, min: 2, max: 15)
+  end
+
+  # ----------------Consultas
+
+  def alphabetical(query) do
+    from c in query, order_by: c.category
   end
 end

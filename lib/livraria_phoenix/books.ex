@@ -4,37 +4,39 @@ defmodule LivrariaPhoenix.Books do
     regras de negócio relacionada ao contexto dos livros
   """
 
-  alias LivrariaPhoenix.Books.{Category, Book}
+  alias LivrariaPhoenix.Books.{Book, Category, Subcategory}
 
-  alias LivrariaPhoenix.Books.Category
-  alias LivrariaPhoenix.Books.Book
   alias LivrariaPhoenix.Repo
 
-  # ###########################
-  #                  Categories
-  # ###########################
+  # #########################
+#                  Categories
+  # #########################
 
       # pag 124 p.phoenix ensina a adcionar multiplos registros
 
-  def create_category(category) do
-    Repo.insert!(%Category{category: category})
+  # ---------------Categories
+
+  def change_category(%Category{} = category, params \\ %{}) do
+    Category.changeset(category, params)
   end
 
-  def view_all_categories do
-    Repo.all(Category)
+  def list_categories do
+    Category
+    |> Category.alphabetical()
+    |> Repo.all()
   end
 
-  def view_category(index) do
-    Repo.get!(Category, index)
+  # ------------Subcategories
+  def change_subcategory(%Subcategory{} = subcategory, params \\ %{}) do
+    Subcategory.changeset(subcategory, params)
   end
 
-  def update_categorie(category) do
-    #verificar como selecionar a categoria correta
-    Repo.insert!(%Category{category: category})
-  end
-
-  def delete_category do
-
+  def list_subcategories(id) do
+    IO.puts(String.duplicate("#", 60))
+    IO.puts("O id selecionado para lista foi: #{id}")
+    Subcategory
+    |> Subcategory.alphabetical(id)
+    |> Repo.all()
   end
 
   # ###########################
