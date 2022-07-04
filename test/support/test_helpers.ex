@@ -1,5 +1,5 @@
 defmodule LivrariaPhoenix.TestHelpers do
-  alias LivrariaPhoenix.{Customers}
+  alias LivrariaPhoenix.{Books, Customers}
 
   def customer_fixture(params \\ %{}) do
     {:ok, customer} =
@@ -12,6 +12,14 @@ defmodule LivrariaPhoenix.TestHelpers do
       })
       |> Customers.register_customer()
     customer
+  end
+
+  def category_fixture(params \\ %{}) do
+    {:ok, category} =
+      params
+      |> Enum.into(%{category: "Testando"})
+      |> Books.create_category()
+    category
   end
 
 end

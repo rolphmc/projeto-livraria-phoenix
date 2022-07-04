@@ -9,7 +9,7 @@ defmodule LivrariaPhoenix.Books do
   alias LivrariaPhoenix.Repo
 
   # #########################
-#                  Categories
+  #                Categories
   # #########################
 
       # pag 124 p.phoenix ensina a adcionar multiplos registros
@@ -18,6 +18,18 @@ defmodule LivrariaPhoenix.Books do
 
   def change_category(%Category{} = category, params \\ %{}) do
     Category.changeset(category, params)
+  end
+
+  def create_category(category) do
+    Repo.insert!(%Category{category: category}, on_conflict: :nothing)
+  end
+
+  def delete_category(%Category{} = category) do
+    Repo.delete(category)
+  end
+
+  def get_category(id) do
+    Repo.get!(Category, id)
   end
 
   def list_categories do
@@ -31,11 +43,29 @@ defmodule LivrariaPhoenix.Books do
     Subcategory.changeset(subcategory, params)
   end
 
+  def create_subcategory(subcategory, category_id) do
+    Repo.insert!(%Subcategory{subcategory: subcategory, category_id: category_id}, on_conflict: :nothing)
+  end
+
+  def get_subcategorie(id) do
+    Repo.get!(Subcategory, id)
+  end
+
+  def get_subcategorie_by(params) do
+    Enum.find(list_all_subcategories(), fn map ->
+      Enum.all?(%{subcategory: params}, fn {key, val} -> Map.get(map, key) == val end)
+    end)
+  end
+
   def list_subcategories(id) do
-    IO.puts(String.duplicate("#", 60))
-    IO.puts("O id selecionado para lista foi: #{id}")
     Subcategory
     |> Subcategory.alphabetical(id)
+    |> Repo.all()
+  end
+
+  def list_all_subcategories() do
+    Subcategory
+    |> Subcategory.list_all_subcategories()
     |> Repo.all()
   end
 
@@ -45,6 +75,18 @@ defmodule LivrariaPhoenix.Books do
 
   def books_list do
     Repo.all(Book)
+  end
+
+  def change_book(%Book{} = book, params \\ %{}) do
+    Book.changeset(book, params)
+  end
+
+  #carrega changeset para estrutura do form de cadastro
+  def chageset_load(id) do
+    subcategory = get_subcategorie(id)
+    category = get_category(subcategory.category_id)
+
+    Book.changeset(%Book{}, %{subcategory_fake: subcategory.subcategory, category_fake: category.category})
   end
 
   def get_book(id) do

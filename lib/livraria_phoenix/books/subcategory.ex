@@ -30,8 +30,11 @@ defmodule LivrariaPhoenix.Books.Subcategory do
   # ----------------Consultas
 
   def alphabetical(query, id) do
-    IO.puts(String.duplicate("#", 60))
-    IO.puts("O id selecionado foi: #{id}")
     from c in query, order_by: c.subcategory, where: c.category_id == ^id
   end
+
+  def list_all_subcategories(query) do
+    from c in query, order_by: c.subcategory
+  end
+
 end

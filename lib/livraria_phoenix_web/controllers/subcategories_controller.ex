@@ -18,7 +18,6 @@ defmodule LivrariaPhoenixWeb.SubcategoriesController do
   end
 
   def load_subcategories(conn, _) do
-    IO.puts(String.duplicate("-> #{conn.params["id"]}", 60))
     assign conn, :subcategories, Books.list_subcategories(conn.params["id"])
   end
 

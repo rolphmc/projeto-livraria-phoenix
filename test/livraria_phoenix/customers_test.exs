@@ -7,22 +7,18 @@ defmodule LivrariaPhoenix.CustomersTest do
 
 
   describe "register_customers/1" do
-    @valid_params %{
-      email: "teste@teste.com",
-      name: "teste testado do teste",
-      username: "teste",
-      password: "teste secreto"
-    }
+    @valid_params %{email: "teste@teste.com", name: "teste testado do teste", username: "teste", password: "teste secreto"}
 
     @invalid_params %{
       #nil
     }
 
     test "com dados validos de clientes" do
-      assert {:ok, %{id: id}=customer} = Customers.register_customer(@valid_params)
+      assert {:ok, %Customer{id: id}=customer} = Customers.register_customer(@valid_params)
       assert customer.name == "teste testado do teste"
       assert customer.username == "teste"
       assert customer.email == "teste@teste.com"
+      assert [%Customer{id: ^id}] = Customers.customer_list()
     end
 
     test "com dados invalidos inseridos pelo cliente" do

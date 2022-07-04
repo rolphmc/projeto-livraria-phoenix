@@ -1,6 +1,6 @@
 <h1>Cadastrar Novo Livro</h1>
-<h3>Escolha a Subcategoria</h3>
+<h3>Insira os dados do livro</h3>
 
 <%= render "form.html", Map.put(assigns, :action, Routes.books_path(@conn, :create)) %>
 
-<span><%= link "Back", to: Routes.page_path(@conn, :index) %></span>
+<span><%= link "Back", to: Routes.books_path(@conn, :index) %></span>

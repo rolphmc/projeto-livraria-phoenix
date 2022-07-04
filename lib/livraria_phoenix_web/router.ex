@@ -19,16 +19,17 @@ defmodule LivrariaPhoenixWeb.Router do
     pipe_through [:browser]
 
     #manual
+    get "/books/new", BooksController, :new
     get "/books", BooksController, :index
     get "/books/:id", BooksController, :show
+    post "/books", BooksController, :create
 
     #automáticos
     get "/", PageController, :index
 
-    #rotas comun (resources)
+    #recursos
     resources "/subcategories", SubcategoriesController, only: [:index, :create]
     resources "/categories", CategoriesController, only: [:index, :create]
-    resources "/books", BooksController, only: [:new, :create]
     resources "/customers", CustomersController, only: [:index, :show, :new, :create]
     resources "/sessions", SessionsController, only: [:new, :create, :delete]
     # new -> chamar form login
