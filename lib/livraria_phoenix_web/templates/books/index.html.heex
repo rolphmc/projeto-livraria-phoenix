@@ -1,9 +1,22 @@
 <h1>Listing Books</h1>
     <table>
         <%= for book <- @books do %>
+        <article class="cards">
+            <img src={book.image} alt="icon Kotlin" class="icon-img" />
+            <h2><%= @book.title %></h2>
+            <p><%= @book.description %></p>
+            <div class="knowledge-level-div">
+                <span style="width:60%" class="knowledge-level"><th><%= @book.price %></th></span>
+            </div>
+        </article>
+        
             <tr>
                 <%= render "book.html", book: book %>
                 <td><%= link "View", to: Routes.books_path(@conn, :show, book.id) %></td>
             </tr>
         <% end %>
     </table>
+                    
+    <%= if @current_customer do %>
+    <span><%= link "+ Add Livro", to: Routes.books_path(@conn, :index) %></span>
+    <% end %>

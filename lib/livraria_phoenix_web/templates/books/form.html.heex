@@ -12,11 +12,11 @@
         <% end %>
 
         <%= label f, :Categoria %>
-        <%= text_input f, :category_fake, disabled: true%> 
+        <%= text_input f, :category_fake, readonly: true %> <!-- apenas leitura -->
         <%= error_tag f, :category_fake %>
 
         <%= label f, :SubCategoria %>
-        <%= text_input f, :subcategory_fake, disabled: true %>
+        <%= text_input f, :subcategory_fake, readonly: true %> <!-- apenas leitura -->
         <%= error_tag f, :subcategory_fake %>
         
         <hr>
@@ -25,9 +25,9 @@
         <%= text_input f, :title %>
         <%= error_tag f, :title %>
       
-        <%= label f, :describe %>
-        <%= textarea f, :describe %>
-        <%= error_tag f, :describe %>
+        <%= label f, :description %>
+        <%= textarea f, :description %>
+        <%= error_tag f, :description %>
       
         <%= label f, :image %>
         <%= text_input f, :image %>

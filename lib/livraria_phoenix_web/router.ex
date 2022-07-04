@@ -22,7 +22,8 @@ defmodule LivrariaPhoenixWeb.Router do
     get "/books/new", BooksController, :new
     get "/books", BooksController, :index
     get "/books/:id", BooksController, :show
-    post "/books", BooksController, :create
+    post "/books/create", BooksController, :create_register
+    post "/books/new", BooksController, :create
 
     #automáticos
     get "/", PageController, :index

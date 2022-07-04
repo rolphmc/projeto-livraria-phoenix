@@ -4,7 +4,7 @@ defmodule LivrariaPhoenix.Books do
     regras de negócio relacionada ao contexto dos livros
   """
 
-  alias LivrariaPhoenix.Books.{Book, Category, Subcategory}
+  alias LivrariaPhoenix.Books.{Book, Category, Subcategory, CategoriesBooks}
 
   alias LivrariaPhoenix.Repo
 
@@ -53,7 +53,7 @@ defmodule LivrariaPhoenix.Books do
 
   def get_subcategorie_by(params) do
     Enum.find(list_all_subcategories(), fn map ->
-      Enum.all?(%{subcategory: params}, fn {key, val} -> Map.get(map, key) == val end)
+      Enum.all?(%{subcategory: to_string(params)}, fn {key, val} -> Map.get(map, key) == val end)
     end)
   end
 
@@ -74,7 +74,9 @@ defmodule LivrariaPhoenix.Books do
   # ###########################
 
   def books_list do
-    Repo.all(Book)
+    Book
+    |> Book.list_all_books()
+    |> Repo.all()
   end
 
   def change_book(%Book{} = book, params \\ %{}) do
@@ -89,6 +91,10 @@ defmodule LivrariaPhoenix.Books do
     Book.changeset(%Book{}, %{subcategory_fake: subcategory.subcategory, category_fake: category.category})
   end
 
+  def delete_book(%Book{} = book) do
+    Repo.delete(book)
+  end
+
   def get_book(id) do
     Repo.get!(Book, id)
   end
@@ -98,4 +104,24 @@ defmodule LivrariaPhoenix.Books do
       Enum.all?(params, fn {key, val} -> Map.get(map, key) == val end)
     end)
   end
+
+
+  def register_books(params) do
+    %Book{}
+    |> Book.changeset(params)
+    |> Repo.insert()
+  end
+
+  def register_category_book(map) do
+
+    subcategory_id = get_subcategorie_by(map.subcategory_fake)
+    book_id = map.id
+
+    map = %{subcategory_id: subcategory_id, book_id: book_id}
+
+    %CategoriesBooks{}
+    |> CategoriesBooks.changeset(map)
+    |> Repo.insert()
+  end
+
 end

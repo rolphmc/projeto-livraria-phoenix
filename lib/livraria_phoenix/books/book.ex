@@ -1,12 +1,13 @@
 defmodule LivrariaPhoenix.Books.Book do
   use Ecto.Schema
   import Ecto.Changeset
+  import Ecto.Query
 
   alias LivrariaPhoenix.Sales.Order
   alias LivrariaPhoenix.Books.{Author, Subcategory}
   alias LivrariaPhoenix.Customers.{Shelf, Customer}
 
-  @fields [:description, :price, :title, :subcategory_fake, :category_fake]
+  @fields [:description, :price, :title, :image, :subcategory_fake, :category_fake]
 
   schema "books" do
     field :description, :string
@@ -28,6 +29,7 @@ defmodule LivrariaPhoenix.Books.Book do
 
   @doc false
   def changeset(struct, params) do
+
     struct
     |> cast(params, @fields)
     |> validate_required(@fields)
@@ -38,5 +40,9 @@ defmodule LivrariaPhoenix.Books.Book do
 
 
     # assoc_constraint --> usar recurso onde for necessário em outras tables
+  end
+
+  def list_all_books(query) do
+    from c in query, order_by: [desc: c.inserted_at]
   end
 end
