@@ -13,7 +13,7 @@ defmodule LivrariaPhoenixWeb.SessionsController do
         conn
         |> LivrariaPhoenixWeb.Auth.login(customer)
         |> put_flash(:info, "Bem vindo, obrigado por retornar!")
-        |> redirect(to: Routes.page_path(conn, :index))
+        |> redirect(to: Routes.books_path(conn, :index))
       {:error, _reason} ->
         conn
         |> put_flash(:error, "Combinação de senha e password é invalida, tente novamente!")
@@ -24,7 +24,7 @@ defmodule LivrariaPhoenixWeb.SessionsController do
   def delete(conn, _) do
     conn
     |> LivrariaPhoenixWeb.Auth.logout()
-    |> redirect(to: Routes.page_path(conn, :index))
+    |> redirect(to: Routes.books_path(conn, :index))
   end
 
 end

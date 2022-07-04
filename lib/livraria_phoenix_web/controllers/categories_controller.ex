@@ -5,6 +5,7 @@ defmodule LivrariaPhoenixWeb.CategoriesController do
   alias LivrariaPhoenix.Books.Category
 
   plug :load_categories when action in [:index, :show]
+  plug :authenticate when action in [:index] #plug da função de auth
 
   def create(conn, %{"category" => category}) do
     redirect(conn, to: Routes.subcategories_path(conn, :index, category: category))
@@ -19,5 +20,18 @@ defmodule LivrariaPhoenixWeb.CategoriesController do
     assign conn, :categories, Books.list_categories()
   end
 
+
+    #Verifica se cliente está logado
+      defp authenticate(conn, _opts) do
+        inspect(conn.assigns.current_customer)
+        if conn.assigns.current_customer do
+          conn
+        else
+          conn
+          |> put_flash(:error, "Você deve se logar para acessar esta página")
+          |> redirect(to: Routes.books_path(conn, :index))
+          |> halt()
+        end
+      end
 
 end

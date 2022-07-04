@@ -2,6 +2,7 @@
   <nav role="navigation" style='text-align:right'>  
     <ul>
       <%= if @current_customer do %>
+        <span><%= link "+ Add Livro ", to: Routes. categories_path(@conn, :index) %>| </span> &nbsp;
         <span><%= @current_customer.username %></span> &nbsp;
         <span><%= link "Log out", to: Routes.sessions_path(@conn, :delete, @current_customer), method: "delete" %></span>
       <% else %>

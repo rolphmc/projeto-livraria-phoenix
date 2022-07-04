@@ -27,7 +27,7 @@ defmodule LivrariaPhoenixWeb.CustomersController do
 
         conn
         |> Auth.login(customer)
-        |> put_flash(:info, "#{customer.username} criado com sucesso, um e-mail de boas vindas foi enviado a seu email >.<")
+        |> put_flash(:info, "#{customer.username} criado com sucesso, um e-mail de boas vindas foi enviado a sua caixa de entrada >.<")
         |> redirect(to: Routes.customers_path(conn, :show, customer))
       {:error, changeset} ->
         render(conn, "new.html", changeset: changeset)
@@ -48,7 +48,7 @@ defmodule LivrariaPhoenixWeb.CustomersController do
     else
       conn
       |> put_flash(:error, "Você deve se logar para acessar esta página")
-      |> redirect(to: Routes.page_path(conn, :index))
+      |> redirect(to: Routes.books_path(conn, :index))
       |> halt()
     end
   end
