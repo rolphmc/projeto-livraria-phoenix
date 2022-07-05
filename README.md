@@ -44,15 +44,15 @@ Projeto elaborado como um desafio prático de aprendizado da linguagem elixir co
  
  * Books
    - Belongs to Author
-   - many to many subcategories
+   - Many to many subcategories
  * Subcategories
    - Bolongs to Categories
-   - manu to many books
+   - Many to many books
  * Categories
    - Has many Subcategories
  * Customers
 
-    -- A regra de negócio que coloquei em pratica com relação aos livros, era de que um livro poderia estar em mais de uma única categoria.
+    -- Como regra de negócio, defini que um livro poderia estar em mais de uma única categoria ao mesmo tempo.
     
     -- Com a finalidade de colocar o projeto em execução sem ter que desenvolver os outros contextos da livraria, para interagir com os books desviei o contexto customers para que os usuários atuassem como se fossem administradores, assim, estando logados no sistema dispunham das permissões para cadastrar livros. (Um fluxo incomum criado apenas para demonstrar a capacidade de execução ao final dos 30 dias do projeto) 
 
