@@ -1,0 +1,47 @@
+<style>
+    select#category_category_id{padding-right: 60px;}
+    a.link_block {color:darkgrey;}
+</style>
+
+    <.form let={f} for={@changeset} action={@action}>   
+        <br> 
+        <%= if @changeset.action do %>
+            <div class="alert alert-danger">
+                <p> Aconteceu algo de errado! confira abaixo</p>
+            </div>
+        <% end %>
+
+        <%= label f, :Categoria %>
+        <%= text_input f, :category_fake, readonly: true %> <!-- apenas leitura -->
+        <%= error_tag f, :category_fake %>
+
+        <%= label f, :SubCategoria %>
+        <%= text_input f, :subcategory_fake, readonly: true %> <!-- apenas leitura -->
+        <%= error_tag f, :subcategory_fake %>
+        
+        <hr>
+
+        <%= label f, :title %>
+        <%= text_input f, :title %>
+        <%= error_tag f, :title %>
+      
+        <%= label f, :description %>
+        <%= textarea f, :description %>
+        <%= error_tag f, :description %>
+      
+        <%= label f, :image %>
+        <%= text_input f, :image %>
+        <%= error_tag f, :image %>
+
+        <%= label f, :price %>
+        <%= text_input f, :price %>
+        <%= error_tag f, :price %>
+
+        <%= #label f, :author %>
+        <%= #textarea f, :author %>
+        <%= #error_tag f, :author %>
+
+        <br><br><br>
+        <div style='text-align:right'><%= submit "Salvar" %></div>
+        <br>
+    </.form>

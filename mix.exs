@@ -20,7 +20,7 @@ defmodule LivrariaPhoenix.MixProject do
   def application do
     [
       mod: {LivrariaPhoenix.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :bamboo]
     ]
   end
 
@@ -48,7 +48,9 @@ defmodule LivrariaPhoenix.MixProject do
       {:telemetry_poller, "~> 1.0"},
       {:gettext, "~> 0.18"},
       {:jason, "~> 1.2"},
-      {:plug_cowboy, "~> 2.5"}
+      {:plug_cowboy, "~> 2.5"},
+      {:pbkdf2_elixir, "~> 2.0"},
+      {:bamboo, "~> 1.5"}
     ]
   end
 

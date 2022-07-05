@@ -1,22 +1,22 @@
-defmodule LivrariaPhoenix.ShoppingCart do
+defmodule LivrariaPhoenix.Sales.ShoppingCart do
   use Ecto.Schema
   import Ecto.Changeset
+
+  @fields [:quantity, :total_price]
 
   schema "shopping_carts" do
     field :quantity, :integer
     field :total_price, :float
 
-    belongs_to :customers, Customer
-
-    has_many :books, Book
-
     timestamps()
   end
 
   @doc false
-  def changeset(shopping_cart, attrs) do
-    shopping_cart
-    |> cast(attrs, [:quantity, :total_price])
-    |> validate_required([:quantity, :total_price])
+  def changeset(struct, params) do
+    struct
+    |> cast(params, @fields)
+    |> validate_required(@fields)
+    |> validate_length(:quantity, greater_than_or_equal_to: 0)
+    |> validate_length(:total_price, greater_than_or_equal_to: 0)
   end
 end

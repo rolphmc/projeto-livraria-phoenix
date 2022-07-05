@@ -1,5 +1,23 @@
-<main class="container">
+<main class="container"> 
+  <nav role="navigation" style='text-align:right'>  
+    <ul>
+      <%= if @current_customer do %>
+        <span><%= link "+ Add Livro ", to: Routes. categories_path(@conn, :index) %>| </span> &nbsp;
+        <span><%= @current_customer.username %></span> &nbsp;
+        <span><%= link "Log out", to: Routes.sessions_path(@conn, :delete, @current_customer), method: "delete" %></span>
+      <% else %>
+        <span><%= link "Sign in", to: Routes.customers_path(@conn, :new) %></span> &nbsp;
+        <span><%= link "Login", to: Routes.sessions_path(@conn, :new) %></span>
+      <% end %>
+    </ul>
+  </nav>
+
+  <br>
   <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
   <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
   <%= @inner_content %>
+
+  <footer>
+    <hr>
+  </footer>
 </main>

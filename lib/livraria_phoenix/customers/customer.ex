@@ -2,24 +2,55 @@ defmodule LivrariaPhoenix.Customers.Customer do
   use Ecto.Schema
   import Ecto.Changeset
 
+  alias LivrariaPhoenix.Books.Book
+  alias LivrariaPhoenix.Sales.Order
+  alias LivrariaPhoenix.Customers.Shelf
+
+  @fields [:email, :name, :username, :encrypted_password]
+
   schema "customers" do
     field :email, :string
     field :encrypted_password, :string
     field :name, :string
-    field :password, :string
     field :username, :string
+    field :password, :string, virtual: true
 
-    #has_many :books, Book
-    #has_many :orders, Order
-    #has_many :shopping_carts, ShoppingCart
+    # relações
+    has_one :shelf, Shelf
+    has_many :orders, Order
+    many_to_many :book, Book, join_through: "shopping_carts"
 
     timestamps()
   end
 
   @doc false
-  def changeset(customer, attrs) do
+  def changeset(customer, params) do
     customer
-    |> cast(attrs, [:username, :name, :email, :encrypted_password, :password])
-    |> validate_required([:username, :name, :email, :encrypted_password, :password])
+    |> cast(params, @fields)
+    |> validate_required(@fields)
+  end
+
+  def register_changeset(customer, params) do
+    customer
+    |> cast(params, [:password, :email, :username, :name])
+    |> validate_required([:password, :email, :username, :name])
+    |> unique_constraint(:email, message: "has already been taken")
+    |> unique_constraint(:username, message: "has already been taken")
+    |> validate_length(:password, min: 4)
+    |> validate_format(:email, ~r/@/)
+    |> validate_format(:username, ~r/^[a-zA-Z0-9]*$/)
+    |> validate_length(:username, min: 4, max: 25)
+    |> put_pass_hash()
+
+  end
+
+  defp put_pass_hash(changeset) do
+    case changeset do
+      %Ecto.Changeset{valid?: true, changes: %{password: pass}} ->
+        put_change(changeset, :encrypted_password, Pbkdf2.hash_pwd_salt(pass))
+
+        _ ->
+        changeset
+    end
   end
 end

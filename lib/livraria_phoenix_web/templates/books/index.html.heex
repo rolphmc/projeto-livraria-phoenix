@@ -1,9 +1,26 @@
-<h1>Listing Books</h1>
-    <table>
+<style>
+    .cards-group{ padding: 0; display: flex; justify-content: space-between; flex-wrap: wrap; text-align: left;}
+    .cards{ display: block; height: auto; flex-grow: 1; flex-basis: 300px; text-align: right; padding: 40px 40px 40px 40px; margin: 10px; border-radius: 5px; box-shadow: 0 0 10px #cacaca; position: relative;}
+    .cards .btn {padding: 20px;}
+    .icon-img{margin-bottom: 25px;}
+    main.container{max-width: 90%;}
+</style>
+
+<h1>Principais Títulos</h1>
+    <article class="cards-group">
         <%= for book <- @books do %>
-            <tr>
-                <td> (<%= book.id %>) <b><%= title(book) %></b></td>
-                <td><%= link "View", to: Routes.books_path(@conn, :show, book.id) %></td>
-            </tr>
+        <article class="cards">
+            <img src={book.image} alt="icon Kotlin" class="icon-img" />
+            <h2><%= book.title %></h2>
+            <p><%= book.description %></p>
+            <div class="knowledge-level-div">
+                <span style="width:60%" class="knowledge-level"><th>R$ <%= book.price %></th></span>
+            </div>
+            <td><%= link "Comprar", to: Routes.books_path(@conn, :show, book.id) %></td>
+        </article>
         <% end %>
-    </table>
+    </article>
+                    
+    <%= if @current_customer do %>
+    <span><%= link "+ Add Livro", to: Routes.books_path(@conn, :index) %></span>
+    <% end %>

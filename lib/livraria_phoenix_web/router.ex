@@ -8,6 +8,7 @@ defmodule LivrariaPhoenixWeb.Router do
     plug :put_root_layout, {LivrariaPhoenixWeb.LayoutView, :root}
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug LivrariaPhoenixWeb.Auth # Autenticação Criada
   end
 
   pipeline :api do
@@ -15,11 +16,27 @@ defmodule LivrariaPhoenixWeb.Router do
   end
 
   scope "/", LivrariaPhoenixWeb do
-    pipe_through :browser
+    pipe_through [:browser]
 
-    get "/books/", BooksController, :index
+    #manual
+    get "/books/new", BooksController, :new
+    get "/books", BooksController, :index
     get "/books/:id", BooksController, :show
+    post "/books/create", BooksController, :create_register
+    post "/books/new", BooksController, :create
+
+    #automáticos
     get "/", PageController, :index
+
+    #recursos
+    resources "/subcategories", SubcategoriesController, only: [:index, :create]
+    resources "/categories", CategoriesController, only: [:index, :create]
+    resources "/customers", CustomersController, only: [:index, :show, :new, :create]
+    resources "/sessions", SessionsController, only: [:new, :create, :delete]
+    # new -> chamar form login
+    # create -> metod post para fazer login
+    # delete -> deslogar
+
   end
 
   # Other scopes may use custom stacks.
@@ -52,7 +69,7 @@ defmodule LivrariaPhoenixWeb.Router do
     scope "/dev" do
       pipe_through :browser
 
-      forward "/mailbox", Plug.Swoosh.MailboxPreview
+      forward "/mailbox", Bamboo.SentEmailViewerPlug
     end
   end
 end
