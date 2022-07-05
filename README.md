@@ -24,12 +24,12 @@ Projeto elaborado como um desafio prático de aprendizado da linguagem elixir co
  - Grande volume de quesitos;
  - Campo desconhecido;
  
- Com base nisso, criei um esboço de projeto contando com a capacidade de construir literalmente toda a web page de uma livraria, plano esse que não durou muito tempo para cair por terra demonstrando que em 30 dias seria mais plausível construir apenas um dos contextos necessários para a funcionalidade de uma livraria, do que construir a livraria completa. Trabalhando sob um contexto, fui capaz de aplicar todas as ferramentas úteis para o desenvolvimento do restante do projeto possibilitando o aprendizado simultâneo sobre a aplicação.
+ Com base nisso, criei um esboço de projeto contando com a capacidade de construir literalmente toda a web page de uma livraria, plano esse que não durou muito tempo para cair por terra, demonstrando que em 30 dias seria mais plausível construir apenas um dos contextos essenciais para a funcionalidade de uma livraria, do que construir a livraria completa. Através dessa ideia fui capaz de aplicar todas as ferramentas	 úteis para o desenvolvimento do restante do projeto, possibilitando o aprendizado simultâneo sobre a aplicação.
 
   [Veja o esboço do projeto no whimsical](https://whimsical.com/projeto-livraria-eixir-deploy1-3-MURKvbCVxLYArNUAsn5Sxr)
 
 ## Os Passos: 
- Conforme o decorrer do desenvolvimento, o projeto foi tomando os sentidos que eram necessários e não mais os que eu havia especulado. portanto, minha jornada para a criação do projeto seguiu as etapas:
+ Conforme o decorrer do desenvolvimento, o projeto foi tomando os sentidos que eram necessários e não mais os que previamente havia especulado. portanto, minha jornada para a criação do projeto seguiu as etapas:
   - Aprendizado da Sintaxe -> Curso Elixir na prática | canal Elly Academy - [acesse play aqui](https://www.youtube.com/playlist?list=PLydk1OOOmzo8VBeU334j4R4WvSByRNpXR)
   - Aprendendo sobre Phoenix | Messengyr - Curso completo e gratuíto sugerido pela Hex - [acesse o curso aqui](https://hexdocs.pm/phoenix/community.html#screencasts-courses)[página HEX com outros links úteis da comunidade](https://hexdocs.pm/phoenix/community.html#screencasts-courses)
   - Aprendizado sobre testes unitários | Coffe -> ELIXIR | Testes unitários - Code/drops #100 - Rocketseat - [acesse vídeo aqui]([https://www.youtube.com/playlist?](https://www.youtube.com/watch?v=c6tSDjj7VNM&t=13s&ab_channel=Rocketseat)
@@ -43,27 +43,29 @@ Projeto elaborado como um desafio prático de aprendizado da linguagem elixir co
  - Com base nos arquivos automáticos fornecidos pelo sistema, desenvolvi as relações do banco de dados ainda com a ideia de construir toda a livraria, ou seja, criei todas as tabelas e relações que juguei necessárias para a aplicação. Entretanto, nesse descritivo vou me focar no contexto dos books, onde obtive as seguintes relações
  
  * Books
-   > Belongs to Author
-   > many to many subcategories
+   - Belongs to Author
+   - many to many subcategories
  * Subcategories
-   > Bolongs to Categories
-   > manu to many books
+   - Bolongs to Categories
+   - manu to many books
  * Categories
-   > Has many Subcategories
+   - Has many Subcategories
  * Customers
 
     -- A regra de negócio que coloquei em pratica com relação aos livros, era de que um livro poderia estar em mais de uma única categoria.
-    -- para interagir com o contexto books desviei o contexto customers para interagir como se fossem administradores, assim, estando logados no sistema dispunham das permissões para cadastrar livros. (Um fluxo incomum criado apenas para demonstrar a capacidade de execução ao final dos 30 dias do projeto) 
+    
+    -- Com a finalidade de colocar o projeto em execução sem ter que desenvolver os outros contextos da livraria, para interagir com os books desviei o contexto customers para que os usuários atuassem como se fossem administradores, assim, estando logados no sistema dispunham das permissões para cadastrar livros. (Um fluxo incomum criado apenas para demonstrar a capacidade de execução ao final dos 30 dias do projeto) 
+
  - Após o desenvolvimento do DB e suas relações. Iniciei o processo de criação de contas para os clientes;
  - Não queria dar início ao projeto com a sensação de que sua organização estava fora dos padrões, pensando nisso iniciei a leitura do livro Programming Phoenix o que me deu muito mais confiança para seguir com o projeto;
  - Desenvolvi todos os fluxos de trabalho entre os endpoints e as respectivas renderizações dos templates aos usuários seguindo os padrões sugeridos pela literatura.
  - Ao construir o sistema de cadastro e autenticação dos customers, usei a biblioteca Cameonin com a dependência `pbkdf2`, porém no projeto messengyr o desenvolvi com a dependência `argon2`;
  -  Por mais que tentei, não conseguir resolver um problema no Encode do projeto, ao usar as acentuações típicas do PT-BR, recebemos o erro `** (UnicodeConversionError) invalid encoding starting at`;
  - Testei as relações entre tabelas através do terminal, com isso aprendi a usar o arquivo `iex.exs` para salvar aliases e outros recursos importantes.
- - Criei o serviço de mala direta foi criado usando a biblioteca Bamboo.
- - O Plug de autenticação para restrição e liberação da sessão de usuários foi escrito conforme preceitos indicados no livro Programming Phoenix, entretanto também fiz o consumo de uma Biblioteca (guardians) no projeto messengyr.
- - O foco dos testes foi visando garantir a imutabilidade, simultaneidade e velocidade da aplicação. Fiz a aplicação dos testes apenas no contexto Customers, porém tenho plena ciência da importância dos testes em todas as etapas do desenvolvimento, deixando-os de relativamente de lado nesse projeto apenas para garantir que o projeto fosse mensurável ao final do período de 30 dias.
- - Para o seletor de categorias usei o plug `plug :load_categories` que alimentava os campos com os dados advindos do banco de dados.
+ - Criei o serviço de mala direta usando a biblioteca Bamboo.
+ - O Plug de autenticação para restrição e liberação da sessão de usuários foi escrito conforme preceitos indicados no livro Programming Phoenix, entretanto também fiz o consumo da Biblioteca (guardians) no projeto messengyr.
+ - O foco dos testes foi visando garantir a imutabilidade, simultaneidade e velocidade da aplicação. Fiz os testes apenas no contexto Customers, porém tenho plena ciência da importância dos testes em todas as etapas do desenvolvimento, deixando-os relativamente de lado nesse projeto apenas para garantir a apresentação de algo mensurável dentro do prazo estabelecido.
+ - Para o seletor de categorias usei o plug `plug :load_categories` que alimenta os campos com os dados advindos do banco de dados.
  - Muitas das configurações feitas nos templates se basearam em inferências que fiz através do meu conhecimento em HTML5.
 
  Além desses pontos existem várias questões não listadas e que podem ser checadas no arquivo `devlog` que pode ser encontrado a seguir.
@@ -73,7 +75,7 @@ Projeto elaborado como um desafio prático de aprendizado da linguagem elixir co
  Para documentar o projeto, fiz um log de desenvolvimento diário no trello e que disponibilizei dentro do projeto no arquivo `devlog.md`
  [Acesse esse arquivo aqui](https://github.com/rolphmc/livraria-phoenix/blob/main/devlog.md)
 
- Todos os projetos acessórios que usei para compor o meu conhecimento estão salvos em meus repositórios aqui no github.
+ Todos os projetos acessórios que usei para compor o meu aprendizado estão salvos em meus repositórios aqui no github.
 
 
 To start your Phoenix server:
