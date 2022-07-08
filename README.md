@@ -1,6 +1,6 @@
 # LivrariaPhoenix
 
-Projeto elaborado como um desafio prático de aprendizado da linguagem elixir com o uso do web framework Phoenix. A ideia o projeto foi constituído a partir de alguns requisitos que seguem:
+Projeto elaborado como um desafio prático de aprendizado da linguagem elixir com o uso do web framework Phoenix. A ideia do projeto foi constituída a partir de alguns requisitos que seguem:
  * BD Estruturado e Normatizado;
  * Usar Testes unitários Mockar serviços;
  * Codificar em camadas;
@@ -26,7 +26,12 @@ Projeto elaborado como um desafio prático de aprendizado da linguagem elixir co
  
  Com base nisso, criei um esboço de projeto contando com a capacidade de construir literalmente toda a web page de uma livraria, plano esse que não durou muito tempo para cair por terra, demonstrando que em 30 dias seria mais plausível construir apenas um dos contextos essenciais para a funcionalidade de uma livraria, do que construir a livraria completa. Através dessa ideia fui capaz de aplicar todas as ferramentas	 úteis para o desenvolvimento do restante do projeto, possibilitando o aprendizado simultâneo sobre a aplicação.
 
-  [Veja o esboço do projeto no whimsical](https://whimsical.com/projeto-livraria-eixir-deploy1-3-MURKvbCVxLYArNUAsn5Sxr)
+Veja o esboço do projeto e suas evoluções no whimsical:
+  [Projeto Livraria Eixir](https://whimsical.com/projeto-livraria-eixir-BkMV1bxxifBFeSZFxnzQXA)
+  [Projeto Livraria Eixir - Deploy1](https://whimsical.com/projeto-livraria-eixir-deploy1-Fsfmy56tmmt64tvZiSi51G)
+  [Projeto Livraria Eixir - Deploy1.1](https://whimsical.com/projeto-livraria-eixir-deploy1-1-QFhfaTEVutSU67AcKuS7a9)
+  [Projeto Livraria Eixir - Deploy1.2](https://whimsical.com/projeto-livraria-eixir-deploy1-2-PPx6EQLNjW4KUKZQz4thXp)
+  [Projeto Livraria Eixir - Deploy1.3](https://whimsical.com/projeto-livraria-eixir-deploy1-3-MURKvbCVxLYArNUAsn5Sxr)
 
 ## Os Passos: 
  Conforme o decorrer do desenvolvimento, o projeto foi tomando os sentidos que eram necessários e não mais os que previamente havia especulado. portanto, minha jornada para a criação do projeto seguiu as etapas:
