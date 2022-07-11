@@ -1,6 +1,6 @@
 # LivrariaPhoenix
 
-Projeto elaborado como um desafio prático de aprendizado da linguagem elixir com o uso do web framework Phoenix. A ideia do projeto foi constituída a partir de alguns requisitos que seguem:
+ Projeto elaborado como um desafio prático de aprendizado da linguagem elixir com o uso do web framework Phoenix. A ideia do projeto foi dimensionar e implantar um sistema de uma livraria com base nos seguintes requisitos:
  * BD Estruturado e Normatizado;
  * Usar Testes unitários Mockar serviços;
  * Codificar em camadas;
