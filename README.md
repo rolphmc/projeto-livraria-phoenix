@@ -3,9 +3,8 @@
  meu nome é Rodolfo e apresento neste documento a execução do desafio de aprendizado da linguagem elixir com o framework phoenix.
  
  Abaixo deixo um video gravado exatamente no trigésimo e ultimo dia do desafio:
- 
 <a href="https://youtu.be/IUFRuNq7ja8" target="_blank"><img src="https://raw.githubusercontent.com/rolphmc/livraria-phoenix/main/thumbnail-play.png"></a>
-
+<tr>
   Foram muitos assuntos estudados e um bocado de trabalho nesses 30 dias, segue o Readme do projeto:
 
 # LivrariaPhoenix
