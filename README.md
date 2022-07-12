@@ -1,3 +1,13 @@
+# Quem sou eu
+ Olá,
+ meu nome é Rodolfo e apresento neste documento a execução do desafio de aprendizado da linguagem elixir com o framework phoenix.
+   
+    Abaixo deixo um video gravado exatamente no trigésimo e ultimo dia do desafio:
+    
+    [![Desenvolvimento | Desafio de aprendizado - Livraria Phoenix - Vídeo]([https://i.imgur.com/vKb2F1B.png](https://raw.githubusercontent.com/rolphmc/livraria-phoenix/main/thumbnail.png))]([https://youtu.be/vt5fpE0bzSY](https://www.youtube.com/watch?v=IUFRuNq7ja8&feature=youtu.be))
+
+  Foram muitos assuntos estudados e um bocado de trabalho nesses 30 dias, segue o Readme do projeto:
+
 # LivrariaPhoenix
 
  Projeto elaborado como um desafio prático de aprendizado da linguagem elixir com o uso do web framework Phoenix. A ideia do projeto foi dimensionar e implantar um sistema de uma livraria com base nos seguintes requisitos:
