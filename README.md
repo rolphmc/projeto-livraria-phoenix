@@ -91,7 +91,7 @@ Veja o esboço do projeto e sua evolução no whimsical:
  Todos os projetos acessórios que usei para compor o meu aprendizado estão salvos em meus repositórios aqui no github.
 
 
-To start your Phoenix server:
+# To start your Phoenix server:
 
   * Using UTF-8 Encoding(CHCP 65001) in Command Prompt (Windows)
   * Install dependencies with `mix deps.get`
