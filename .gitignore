@@ -32,3 +32,6 @@ livraria_phoenix-*.tar
 npm-debug.log
 /assets/node_modules/
 
+
+# Ignore presentation road map
+README_presentation.md
