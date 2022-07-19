@@ -1,7 +1,29 @@
  Olá,
  meu nome é Rodolfo e apresento neste documento a execução do desafio de aprendizado da linguagem elixir com o framework phoenix.
 
-# LivrariaPhoenix
+   Veja as ultimas atualizações desse projeto [aqui](#📰-últimas-atualizações)
+
+## Sumário
+  [|> LivrariaPhoenix](#📚-livrariaphoenix)
+    
+  >  [|> O Desafio](#o-desafio)
+
+  >  [|> O Projeto](#o-projeto)
+    
+  >  [|> As Etapas](#as-etapas)
+
+  >  [|> Execução](#execução)
+
+  >  [|> Registro diário do Projeto](#registro-diário-do-projeto)
+
+  >  [|> Últimas Atualizações](#📰-últimas-atualizações)
+
+  >  [|> Para iniciar seu servidor Phoenix](#to-start-your-phoenix-server) 
+
+
+&nbsp;
+
+# 📚 LivrariaPhoenix
 
  Projeto elaborado como um desafio prático de aprendizado da linguagem elixir com o uso do web framework Phoenix. A ideia do projeto foi dimensionar e implantar um sistema de uma livraria com base nos seguintes requisitos:
  * BD Estruturado e Normatizado;
@@ -18,11 +40,15 @@
 <tr>
   Foram muitos assuntos estudados e um bocado de trabalho nesses 30 dias, veja abaixo mais detalhes do projeto:
 
+&nbsp;
+
 ## O desafio
  O projeto foi elaborado em um prazo de 30 dias partindo do contexto de não ter nenhum conhecimento sobre a linguagem elixir e do paradigma funcional, com isso tracei a seguinte estratégia:  
  - Aprender a sintaxe básica do elixir, o paradigma funcional e seus principais recursos;
  - Criar alguns pequenos projetos com o objetivo de entender o web framework phoenix e sua interação com o padrão MVC;
  - Desenvolver o projeto o mais próximo possível das melhores práticas de desenvolvimento.
+
+&nbsp;
 
 ## O projeto:
 
@@ -41,7 +67,9 @@ Veja o esboço do projeto e sua evolução no whimsical:
   - [Projeto Livraria Eixir - Deploy1.2](https://whimsical.com/projeto-livraria-eixir-deploy1-2-PPx6EQLNjW4KUKZQz4thXp)
   - [Projeto Livraria Eixir - Deploy1.3](https://whimsical.com/projeto-livraria-eixir-deploy1-3-MURKvbCVxLYArNUAsn5Sxr)
 
-## Os Passos: 
+&nbsp;
+
+## As Etapas: 
  Conforme o decorrer do desenvolvimento, o projeto foi tomando os sentidos que eram necessários e não mais os que previamente havia especulado. portanto, minha jornada para a criação do projeto seguiu as etapas:
   - Aprendizado da Sintaxe -> Curso Elixir na prática | canal Elly Academy - [acesse play aqui](https://www.youtube.com/playlist?list=PLydk1OOOmzo8VBeU334j4R4WvSByRNpXR)
   - Aprendendo sobre Phoenix | Messengyr - Curso completo e gratuíto sugerido pela Hex - [acesse o curso aqui](https://hexdocs.pm/phoenix/community.html#screencasts-courses)[página HEX com outros links úteis da comunidade](https://hexdocs.pm/phoenix/community.html#screencasts-courses)
@@ -50,6 +78,7 @@ Veja o esboço do projeto e sua evolução no whimsical:
   - Aprendendo sobre estrutura MVC | Hello -> Generators Hex Docs - [acesse aqui](https://hexdocs.pm/phoenix/views.html)
   - Padronização do projeto | Programming Phoenix - Livro José Valin
  
+&nbsp;
  
 ## Execução:
  - Primeiramente criei todos os schemas, changesets e migrates atraves do generator `phx.gen.schema`;
@@ -83,15 +112,25 @@ Veja o esboço do projeto e sua evolução no whimsical:
 
  Além desses pontos existem várias questões não listadas e que podem ser checadas no arquivo `devlog` que pode ser encontrado a seguir.
 
+&nbsp;
 
 ## Registro diário do projeto
- Para documentar o projeto, fiz um log de desenvolvimento diário no trello e que disponibilizei dentro do projeto no arquivo `devlog.md`
- [Acesse esse arquivo aqui](https://github.com/rolphmc/livraria-phoenix/blob/main/devlog.md)
+ Para documentar os primeiros 30 dias do projeto, fiz um log de desenvolvimento diário no trello e que disponibilizei no arquivo 
+ [`devlog.md`](https://github.com/rolphmc/livraria-phoenix/blob/main/devlog.md)
 
- Todos os projetos acessórios que usei para compor o meu aprendizado estão salvos em meus repositórios aqui no github.
+ Todos os projetos acessórios que usei para compor o meu aprendizado estão salvos em meus repositórios aqui no github.&
 
+&nbsp;
 
-# To start your Phoenix server:
+##  📰 Últimas atualizações
+
+  > 17/07 - inserção do sumário ao read-me
+
+  > 16/07 - ajuste no método post da route de cadastro de livros. 
+
+&nbsp;
+
+## To start your Phoenix server:
 
   * Using UTF-8 Encoding(CHCP 65001) in Command Prompt (Windows)
   * Install dependencies with `mix deps.get`
