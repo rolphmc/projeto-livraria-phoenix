@@ -4,7 +4,7 @@
    Veja as ultimas atualizações desse projeto [aqui](#📰-últimas-atualizações)
 
 ## Sumário
-  [|> LivrariaPhoenix](#📚-livrariaphoenix)
+  [LivrariaPhoenix](#📚-livrariaphoenix)
     
   >  [|> O Desafio](#o-desafio)
 
