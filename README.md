@@ -73,7 +73,7 @@ Veja o esboço do projeto e sua evolução no whimsical:
  Conforme o decorrer do desenvolvimento, o projeto foi tomando os sentidos que eram necessários e não mais os que previamente havia especulado. portanto, minha jornada para a criação do projeto seguiu as etapas:
   - Aprendizado da Sintaxe -> Curso Elixir na prática | canal Elly Academy - [acesse play aqui](https://www.youtube.com/playlist?list=PLydk1OOOmzo8VBeU334j4R4WvSByRNpXR)
   - Aprendendo sobre Phoenix | Messengyr - Curso completo e gratuíto sugerido pela Hex - [acesse o curso aqui](https://hexdocs.pm/phoenix/community.html#screencasts-courses)[página HEX com outros links úteis da comunidade](https://hexdocs.pm/phoenix/community.html#screencasts-courses)
-  - Aprendizado sobre testes unitários | Coffe -> ELIXIR | Testes unitários - Code/drops #100 - Rocketseat - [acesse vídeo aqui]([https://www.youtube.com/playlist?](https://www.youtube.com/watch?v=c6tSDjj7VNM&t=13s&ab_channel=Rocketseat)
+  - Aprendizado sobre testes unitários | Coffe -> ELIXIR | Testes unitários - Code/drops #100 - Rocketseat - [acesse vídeo aqui](https://www.youtube.com/watch?v=c6tSDjj7VNM&t=13s&ab_channel=Rocketseat)
   - Aprendendo sobre Relacionamentos entre tabelas | DB com Ecto | Petex - Elixir - Banco de dados com o Ecto! - Code/drops #94 - Rocketseat - [acesse aqui](https://www.youtube.com/watch?v=tjvwsxjvBwY&ab_channel=Rocketseat)
   - Aprendendo sobre estrutura MVC | Hello -> Generators Hex Docs - [acesse aqui](https://hexdocs.pm/phoenix/views.html)
   - Padronização do projeto | Programming Phoenix - Livro José Valin
