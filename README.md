@@ -87,12 +87,14 @@ Veja o esboço do projeto e sua evolução no whimsical:
  * Books
    - Belongs to Author
    - Many to many subcategories
+   - Many to many customers
  * Subcategories
    - Bolongs to Categories
    - Many to many books
  * Categories
    - Has many Subcategories
  * Customers
+   - Many to many books
 
     -- Como regra de negócio, defini que um livro poderia estar em mais de uma única categoria ao mesmo tempo.
     
