@@ -4,6 +4,7 @@ defmodule LivrariaPhoenixWeb.BooksController do
   alias LivrariaPhoenix.Books
   plug :authenticate when action in [:new,] #plug da função de auth
 
+
   def index(conn, _params) do
     books = Books.books_list()
     render(conn, "index.html", books: books)

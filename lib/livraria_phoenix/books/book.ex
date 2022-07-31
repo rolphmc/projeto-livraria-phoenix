@@ -7,7 +7,7 @@ defmodule LivrariaPhoenix.Books.Book do
   alias LivrariaPhoenix.Books.{Author, Subcategory}
   alias LivrariaPhoenix.Customers.{Shelf, Customer}
 
-  @fields [:description, :price, :title, :image, :subcategory_fake, :category_fake]
+  @require_fields ~w(description price title image subcategory_fake category_fake)a
 
   schema "books" do
     field :description, :string
@@ -31,8 +31,8 @@ defmodule LivrariaPhoenix.Books.Book do
   def changeset(struct, params) do
 
     struct
-    |> cast(params, @fields)
-    |> validate_required(@fields)
+    |> cast(params, @require_fields)
+    |> validate_required(@require_fields)
     |> validate_required(:price, greater_than_or_equal_to: 0.00)
     |> validate_length(:description, min: 10, max: 256)
     |> validate_length(:title, min: 10, max: 60)
@@ -44,5 +44,11 @@ defmodule LivrariaPhoenix.Books.Book do
 
   def list_all_books(query) do
     from c in query, order_by: [desc: c.inserted_at]
+  end
+
+  def changeset_update_categories(%Book{} = book, subcategorie) do
+    book
+    |> cast(%{}, @require_fields)
+    |> put_assoc(:subcategories, subcategories)
   end
 end
