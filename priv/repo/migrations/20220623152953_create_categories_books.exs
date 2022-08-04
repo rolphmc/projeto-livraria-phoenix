@@ -2,9 +2,11 @@ defmodule LivrariaPhoenix.Repo.Migrations.CreateCategoriesBooks do
   use Ecto.Migration
 
   def change do
-    create table(:categories_books) do
-      add :subcategory_id, references(:subcategories, on_delete: :delete_all, primary_key: true)
-      add :book_id, references(:books, on_delete: :delete_all, primary_key: true)
+    create table(:categories_books, primary_key: false) do
+      add :subcategory_id, references(:subcategories, on_delete: :delete_all), primary_key: true
+      add :book_id, references(:books, on_delete: :delete_all), primary_key: true
+
+      timestamps()
     end
 
     create(index(:categories_books, [:subcategory_id]))

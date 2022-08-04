@@ -1,4 +1,8 @@
 defmodule LivrariaPhoenix.Auxiliary do
+
+  @doc """
+    Discovery type of data
+  """
   def typeof(a) do
     cond do
         is_float(a)    -> "float"
@@ -12,4 +16,5 @@ defmodule LivrariaPhoenix.Auxiliary do
         true           -> "idunno"
     end
   end
+
 end

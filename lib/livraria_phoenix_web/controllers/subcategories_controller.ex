@@ -22,7 +22,6 @@ defmodule LivrariaPhoenixWeb.SubcategoriesController do
     assign conn, :subcategories, Books.list_subcategories(conn.params["id"])
   end
 
-
     #Verifica se cliente está logado
       defp authenticate(conn, _opts) do
         inspect(conn.assigns.current_customer)

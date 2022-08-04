@@ -8,6 +8,9 @@ alias LivrariaPhoenix.Repo
 alias LivrariaPhoenix.{Books, Customers}
 
 #aliases de structs
-alias LivrariaPhoenix.Books.{Author, Book, CategoriesBooks,Category, Subcategory, LivrariaPhoenix.Books.CategoriesBooks}
+alias LivrariaPhoenix.Books.{Author, Book, CategoriesBooks,Category, Subcategory}
 alias LivrariaPhoenix.Customers.{Customer, Shelf}
 alias LivrariaPhoenix.Sales.{Order, OrdersBooks, ShoppingCart}
+
+#aliases totais
+alias LivrariaPhoenix.Auxiliary

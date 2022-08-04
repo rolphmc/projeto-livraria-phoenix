@@ -19,13 +19,10 @@ defmodule LivrariaPhoenixWeb.BooksController do
   def create_register(conn, %{"book" => book_params}) do
     case Books.register_books(book_params) do #futuramente criar tratativa de erros para categorias
       {:ok, book} ->
-
-        Books.register_category_book(book)
-        books = Books.books_list()
-
+        Books.register_categories_books(book, book_params["subcategory"])
         conn
         |> put_flash(:info, "Livro: #{book.title} | criado com sucesso >.<")
-        |> render("index.html", books: books)
+        |> render("index.html", books: Books.books_list())
       {:error, changeset} ->
         render(conn, "new.html", changeset: changeset)
     end

@@ -85,10 +85,10 @@ defmodule LivrariaPhoenix.Books do
 
   #carrega changeset para estrutura do form de cadastro
   def chageset_load(id) do
-    subcategory = get_subcategorie(id)
-    category = get_category(subcategory.category_id)
+    subcategory = get_subcategorie(id) #retorna um struct da subcategoria escolhida
+    category = get_category(subcategory.category_id) #retorna um struct da categoria escolhida
 
-    Book.changeset(%Book{}, %{subcategory_fake: subcategory.subcategory, category_fake: category.category})
+    Book.changeset(%Book{}, %{subcategory: subcategory.subcategory, category: category.category})
   end
 
   def delete_book(%Book{} = book) do
@@ -105,23 +105,17 @@ defmodule LivrariaPhoenix.Books do
     end)
   end
 
-
   def register_books(params) do
     %Book{}
     |> Book.changeset(params)
     |> Repo.insert()
   end
 
-  def register_category_book(map) do
+  def register_categories_books(book, _subcategory) do
 
-    subcategory_id = get_subcategorie_by(map.subcategory_fake)
-    book_id = map.id
+    subcategory = Repo.get_by(Subcategory, subcategory: "Logic")
 
-    map = %{subcategory_id: subcategory_id, book_id: book_id}
-
-    %CategoriesBooks{}
-    |> CategoriesBooks.changeset(map)
-    |> Repo.insert()
+    #insert subcategory and book in categories_books
+    Repo.insert(%CategoriesBooks{book_id: book.id, subcategory_id: subcategory.id})
   end
-
 end
