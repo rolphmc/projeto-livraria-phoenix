@@ -4,6 +4,7 @@ defmodule LivrariaPhoenix.Books.Subcategory do
   import Ecto.Query
 
   alias LivrariaPhoenix.Books.Category
+  alias LivrariaPhoenix.Books.Book
 
   @fields [:subcategory, :category_id]
 

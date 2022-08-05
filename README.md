@@ -1,7 +1,19 @@
  Olá,
- meu nome é Rodolfo e apresento neste documento a execução do desafio de aprendizado da linguagem elixir com o framework phoenix.
+ meu nome é Rodolfo e apresento neste documento a execução do desafio de aprendizado da linguagem elixir com o framework phoenix. 
 
-   Veja as ultimas atualizações desse projeto [aqui](#📰-últimas-atualizações)
+   ## Últimas atualizações desse projeto
+   ### [04/08 - Books Many_to_many Subcategories](https://github.com/rolphmc/livraria-phoenix/commit/7ec4e1f44b037f2ea64661b5d3730da56c52d269)
+  > Foi concluída a criação do relacionamento many_to_many entre os livros e subcategorias, que por sua vez mantém o relacionamento "belongs_to" com categorias.
+  
+ ___*Próximo passo:*___ desenvolver o recurso de edição de livros, com as respectivas funcionalidades:
+  
+  - incluir registro do autor;
+  - implantar página de funcionalidade - edição de livros;
+  - implantar página de produto - Detalhes livro;
+  
+ [veja o aqui registro de atualizações](#📰-últimas-atualizações)
+
+ ______________________
 
 ## Sumário
   [LivrariaPhoenix](#📚-livrariaphoenix)
@@ -125,6 +137,7 @@ Veja o esboço do projeto e sua evolução no whimsical:
 &nbsp;
 
 ##  📰 Últimas atualizações
+  > 04/08 - Books Many_to_many Subcategories
 
   > 17/07 - inserção do sumário ao read-me
 
