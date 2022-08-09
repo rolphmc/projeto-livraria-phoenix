@@ -2,14 +2,19 @@
  meu nome é Rodolfo e apresento neste documento a execução do desafio de aprendizado da linguagem elixir com o framework phoenix. 
 
    ## 📰 Últimas atualizações
-   ### [03/08 - Books Many_to_many Subcategories](https://github.com/rolphmc/livraria-phoenix/commit/7ec4e1f44b037f2ea64661b5d3730da56c52d269)
-  > Foi concluída a criação do relacionamento many_to_many entre os livros e subcategorias, que por sua vez mantém o relacionamento "belongs_to" com categorias.
+   ### [08/08 - Resgistro do autor e Ajuste passagem da Subcategoria](https://github.com/rolphmc/livraria-phoenix/commit/e645802a1ef110c350ac8591ee26243a7b26ee68)
+  > Desenvolvido o registro simultâneo autor/ livro através do relacionamento has_many/belongs_to. Além disso, executei uma limpeza do código no books_controller > create. removi a variável id integrando sua expressão ao carregamento do changeset.
   
- ___*Próximo passo:*___ desenvolver o recurso de edição de livros, com as respectivas funcionalidades:
-  
-  - incluir registro do autor;
-  - implantar página de funcionalidade - edição de livros;
-  - implantar página de produto - Detalhes livro;
+ ___*Próximo passo:*___ 
+ - implantar página de funcionalidade - edição de livros;
+ - implantar página de produto - Detalhes livro;
+ 
+ ___*Passos Extras:*___ 
+ - inserir exibição da categoria na página principal.
+ - resolver problema do encode para possibilitar a exibição do conteúdo em pt-br;
+ - adicionar "focus" nos campos necessários dos formulários;
+ - adicionar máscara de valor correta na exibição principal (R$ 0,00)
+ - descobrir como deixar a navegação coerente. Ou seja, não deiaxar o usuário confuso ao selecionar o botão "back" por exemplo.
   
  [veja o aqui registro de atualizações](#Últimas atualizações)
 
@@ -137,6 +142,8 @@ Veja o esboço do projeto e sua evolução no whimsical:
 &nbsp;
 
 ## 📰 Últimas atualizações
+  > 08/08 - Resgistro do autor e Ajuste passagem da Subcategoria
+
   > 03/08 - Books Many_to_many Subcategories
 
   > 17/07 - inserção do sumário ao read-me
