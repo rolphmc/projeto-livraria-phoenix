@@ -4,9 +4,17 @@ defmodule LivrariaPhoenix.Books do
     regras de negócio relacionada ao contexto dos livros
   """
 
-  alias LivrariaPhoenix.Books.{Book, Category, Subcategory, CategoriesBooks}
+  alias LivrariaPhoenix.Books.{Author, Book, Category, Subcategory, CategoriesBooks}
 
   alias LivrariaPhoenix.Repo
+
+  # ###########################
+  #                      Author
+  # ###########################
+
+  def register_author(name) do
+    Repo.insert!(%Author{author_name: name})
+  end
 
   # #########################
   #                Categories
@@ -83,12 +91,17 @@ defmodule LivrariaPhoenix.Books do
     Book.changeset(book, params)
   end
 
-  #carrega changeset para estrutura do form de cadastro
-  def chageset_load(id) do
-    subcategory = get_subcategorie(id) #retorna um struct da subcategoria escolhida
-    category = get_category(subcategory.category_id) #retorna um struct da categoria escolhida
+  @doc """
+  Retorna um %Ecto.changeset carregado com a subategoria, categoria e autor para compor o furmulário de cadastro de um novo livro. O parâmetro representa um id de uma subcategoria valida.
+  ## Examples
+      iex> create_book_chageset_load(id)
+      [%Ecto.changeset{data: %Book{}}]
+  """
+  def create_book_chageset_load(id) do
+    subcategory = get_subcategorie(id)
+    category = get_category(subcategory.category_id)
 
-    Book.changeset(%Book{}, %{subcategory: subcategory.subcategory, category: category.category})
+    Book.changeset(%Book{}, %{subcategory: subcategory.subcategory, category: category.category, author: ""})
   end
 
   def delete_book(%Book{} = book) do
@@ -107,13 +120,14 @@ defmodule LivrariaPhoenix.Books do
 
   def register_books(params) do
     %Book{}
+    |> Ecto.build_assoc(:authors)
     |> Book.changeset(params)
     |> Repo.insert()
   end
 
-  def register_categories_books(book, _subcategory) do
+  def register_categories_books(book, subcategory) do
 
-    subcategory = Repo.get_by(Subcategory, subcategory: "Logic")
+    subcategory = Repo.get_by(Subcategory, subcategory: subcategory)
 
     #insert subcategory and book in categories_books
     Repo.insert(%CategoriesBooks{book_id: book.id, subcategory_id: subcategory.id})

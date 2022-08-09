@@ -11,13 +11,12 @@ defmodule LivrariaPhoenixWeb.BooksController do
   end
 
   def create(conn, %{"subcategory" => subcategory_params}) do
-    id = Integer.parse(subcategory_params["subcategory_id"]) |> elem(0)
-    changeset = Books.chageset_load(id) #carrega categoria e subcategoria no changeset
+    changeset = Books.create_book_chageset_load(subcategory_params["subcategory_id"])
     render(conn, "new.html", changeset: changeset)
   end
 
   def create_register(conn, %{"book" => book_params}) do
-    case Books.register_books(book_params) do #futuramente criar tratativa de erros para categorias
+    case Books.register_books(book_params) do
       {:ok, book} ->
         Books.register_categories_books(book, book_params["subcategory"])
         conn

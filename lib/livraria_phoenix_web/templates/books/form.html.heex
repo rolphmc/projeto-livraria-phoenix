@@ -12,11 +12,11 @@
         <% end %>
 
         <%= label f, :Categoria %>
-        <%= text_input f, :category, readonly: true %> <!-- apenas leitura -->
+        <%= text_input f, :category, readonly: true %>
         <%= error_tag f, :category %>
 
         <%= label f, :SubCategoria %>
-        <%= text_input f, :subcategory, readonly: true %> <!-- apenas leitura -->
+        <%= text_input f, :subcategory, readonly: true %>
         <%= error_tag f, :subcategory %>
         
         <hr>
@@ -37,9 +37,9 @@
         <%= text_input f, :price %>
         <%= error_tag f, :price %>
 
-        <%= #label f, :author %>
-        <%= #textarea f, :author %>
-        <%= #error_tag f, :author %>
+        <%= label f, :author %>
+        <%= text_input f, :author %>
+        <%= error_tag f, :author %>
 
         <br><br><br>
         <div style='text-align:right'><%= submit "Salvar" %></div>
